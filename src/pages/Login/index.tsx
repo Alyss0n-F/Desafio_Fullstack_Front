@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form"
 import { LoginData, schema } from "./validator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useAuth } from "../../hooks/useAuth"
+import { Link } from "react-router-dom"
 
 export const Login = () => {
     const { register, handleSubmit } = useForm<LoginData>({
@@ -20,6 +21,8 @@ export const Login = () => {
                 <input type="password" id="password" {...register("password")}/>
                 <button type="submit">Entrar</button>
             </form>
+
+            <Link to="/register">Criar conta</Link>
         </main>
 
     )

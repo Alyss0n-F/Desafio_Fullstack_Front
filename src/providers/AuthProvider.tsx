@@ -2,6 +2,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 import { LoginData } from "../pages/Login/validator";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { CreateUserData } from "../pages/Register/validator";
 
 interface AuthProviderProps {
     children: ReactNode
@@ -10,6 +11,8 @@ interface AuthProviderProps {
 interface AuthContextValues {
     signIn: (data: LoginData) => Promise<void> 
     loading: boolean
+    logout: () => void
+    createUser: (data: CreateUserData) => Promise<void>
 }
 
 interface LoginResponse {
@@ -27,7 +30,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
         if(!token) {
             setLoading(false)
-            navigate("/")
             return
         }
 
@@ -53,8 +55,26 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     }
 
+    const createUser = async (data: CreateUserData) => {
+        try {
+            await api.post("/users", data)
+            setLoading(false)
+    
+            alert("Conta criada com sucesso")
+            navigate("/")
+        } catch(error) {
+            console.log(error)
+        }
+
+    }
+
+    const logout = () => {
+        localStorage.removeItem("desafio_fullstack:token")
+        navigate("/")
+    } 
+
     return (
-        <AuthContext.Provider value={{signIn, loading}}>
+        <AuthContext.Provider value={{signIn, loading, logout, createUser}}>
             { children }
         </AuthContext.Provider>
     )
