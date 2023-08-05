@@ -39,6 +39,7 @@ export const Dashboard = () => {
         <>
             <Container>
                 <header>
+                    <h2>Dashboard</h2>
                     <button type="button" onClick={toggleModal}>Adicionar contato</button>
                     <button type="button" onClick={logout}>Sair</button>
                     <Link to="/users">Central de usuários</Link>
