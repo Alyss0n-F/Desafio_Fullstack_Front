@@ -3,6 +3,7 @@ import { CreateUserData, schema } from "./validator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useAuth } from "../../hooks/useAuth"
 import { Link } from "react-router-dom"
+import { Buttons, Container, Form, Labels } from "./styles"
 
 export const Register = () => {
     const { register, handleSubmit } = useForm<CreateUserData>({
@@ -11,10 +12,11 @@ export const Register = () => {
     const { createUser } = useAuth()
 
     return (
-        <main>
+        <Container>
             <h2>Criar conta</h2>
 
-            <form onSubmit={handleSubmit(createUser)}>
+            <Form onSubmit={handleSubmit(createUser)}>
+                <Labels>
                 <label htmlFor="text">Nome</label>
                 <input type="text" id="text" {...register("name")}/>
 
@@ -26,12 +28,14 @@ export const Register = () => {
 
                 <label htmlFor="phone_number">Telefone</label>
                 <input type="text" id="phone_number" {...register("phone_number")}/>
+                </Labels>
+                <Buttons>
+                    <button type="submit">Cadastre-se</button>
+                    <Link to="/">Voltar para login</Link>
+                </Buttons>
+            </Form>
 
-                <button type="submit">Cadastre-se</button>
-            </form>
-
-            <Link to="/">Voltar para login</Link>
-        </main>
+        </Container>
 
     )
 }

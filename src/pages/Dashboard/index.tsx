@@ -39,10 +39,11 @@ export const Dashboard = () => {
         <>
             <Container>
                 <header>
-                    <h2>Dashboard</h2>
-                    <button type="button" onClick={toggleModal}>Adicionar contato</button>
-                    <button type="button" onClick={logout}>Sair</button>
-                    <Link to="/users">Central de usuários</Link>
+                    <h1>Meus contatos</h1>
+                    <div>
+                        <Link to="/users">Central de usuários</Link>
+                        <button type="button" onClick={logout} id="logout_button">Sair</button>
+                    </div>
                 </header>
 
                 {
@@ -50,6 +51,7 @@ export const Dashboard = () => {
                 }
 
                 <main>
+                    <button type="button" onClick={toggleModal} id="add_button">Adicionar contato</button>
                     <Board>{renderBoard(contacts)}</Board>
                 </main>
             </Container>

@@ -33,9 +33,11 @@ export const UsersList = () => {
         <>
             <Container>
                 <header>
-                    <h2>Central de Usuários</h2>
-                    <button type="button" onClick={logout}>Sair</button>
-                    <Link to="/dashboard">Meus contatos</Link>
+                    <h1>Central de Usuários</h1>
+                    <div>
+                        <Link to="/dashboard">Meus contatos</Link>
+                        <button type="button" onClick={logout} id="logout_button">Sair</button>
+                    </div>
                 </header>
                 <main>
                     <Board>{renderUsers(users)}</Board>

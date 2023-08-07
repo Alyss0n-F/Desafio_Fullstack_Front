@@ -20,7 +20,9 @@ export const Card = ({ contact, setContacts }: CardProps) => {
             }
 
             <Container onClick={toggleModalUpdate}>
-                {contact.name}
+                <h3>{contact.name}</h3>
+                <p>Email: {contact.email}</p>
+                <p>Telefone: {contact.phone_number}</p>
             </Container>
         </>
 

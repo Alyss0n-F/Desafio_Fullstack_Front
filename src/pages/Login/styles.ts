@@ -25,7 +25,7 @@ export const Container = styled.div`
 export const Form = styled.form`
     background-color: #d5d5d5;
     width: 25vw;
-    height: 60vh;
+    height: 45vh;
     padding: 10px;
     display: flex;
     align-items: center;

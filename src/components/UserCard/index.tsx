@@ -21,7 +21,9 @@ export const UserCard = ({ user, setUsers }: UserCardProps) => {
             }
 
             <Container onClick={toggleModalUpdate}>
-                {user.name}
+                <h3>{user.name}</h3>
+                <p>Email: {user.email}</p>
+                <p>Telefone: {user.phone_number}</p>
             </Container>
         </>
 
